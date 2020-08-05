@@ -4,20 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
 /**
  * @author :覃玉锦
- * @create :2020-08-03 18:07:00
+ * @create :2020-08-05 09:13:00
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User implements Serializable {
+public class Menu {
     private int id;
 
     private String name;
 
-    private String password;
+    private String url;
 
+    private int parentId;
 }

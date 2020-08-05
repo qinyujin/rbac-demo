@@ -2,6 +2,7 @@ package com.boss.rbacdemo;
 
 import com.boss.rbacdemo.interceptor.LoginInterceptor;
 import com.boss.rbacdemo.interceptor.UserInterceptor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * 配置拦截器的拦截路径
  */
 @Configuration
+@Slf4j
 public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private LoginInterceptor loginInterceptor;
@@ -27,8 +29,6 @@ public class WebConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/api/login");
 
         registry.addInterceptor(userInterceptor)
-                .addPathPatterns("/api/user/**")
-                .excludePathPatterns("/api/user/info")
-                .excludePathPatterns("/api/user/updateName");
+                .addPathPatterns("/api/user/**");
     }
 }

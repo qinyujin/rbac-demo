@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  * @author :覃玉锦
@@ -34,17 +35,21 @@ public class LoginController {
     private UserService userService;
 
     @PostMapping("login")
-    public boolean login(HttpServletResponse response, @RequestBody User user) {
-        int num = user.getNum();
-        User u = userService.getUserByNum(num);
-        //如果找到用户,校验密码
+    public Map login(HttpServletResponse response, @RequestBody User user) {
+        User u = userService.getUserByName(user.getName());
+        log.debug("{}", u);
+        log.debug("{}", u.getId());
+//        用户名和密码匹配成功
         if (u != null && encoder.matches(user.getPassword(), u.getPassword())) {
-            MyToken myToken = new MyToken(u.getNum(), u.getRole());
-            //把所需用户信息（num、role）放入header，减少访问数据库次数
-            response.setHeader(MyToken.AUTHORIZATION, encryptComponent.encryptToken(myToken));
-            return true;
-
+//            必须保证用户有对应角色,不然抛异常
+            int role = userService.getRole(u.getId());
+            MyToken token = new MyToken(u.getId(), role);
+            String auth = encryptComponent.encryptToken(token);
+            response.setHeader(MyToken.AUTHORIZATION, auth);
+            log.debug("{}", role);
+        } else {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "用户名密码错误");
         }
-        throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "用户名或者密码错误");
+        return Map.of("user",u);
     }
 }

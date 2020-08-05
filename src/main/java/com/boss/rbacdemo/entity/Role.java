@@ -11,7 +11,7 @@ import java.io.Serializable;
  */
 @Data
 public class Role implements Serializable {
-    private int rid;
+    private int id;
 
-    private String detail;
+    private String name;
 }

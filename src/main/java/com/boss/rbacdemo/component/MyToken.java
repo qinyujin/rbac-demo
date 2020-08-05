@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class MyToken {
     public static final String AUTHORIZATION = "authorization";
 
-    private int num;
+    private int uid;
 
     private int role;
 }

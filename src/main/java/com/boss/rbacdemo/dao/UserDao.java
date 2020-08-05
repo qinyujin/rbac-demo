@@ -1,9 +1,8 @@
 package com.boss.rbacdemo.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.boss.rbacdemo.entity.User;
-import org.apache.ibatis.annotations.Mapper;
-
-import java.util.List;
+import org.apache.ibatis.annotations.*;
 
 /**
  * @author :覃玉锦
@@ -11,42 +10,17 @@ import java.util.List;
  * 对Employee的crud
  */
 @Mapper
-public interface UserDao {
-   /**
-    * 通过num获取user
-    * @param num
-    * @return
-    */
-   User getUserByNum(int num);
+public interface UserDao extends BaseMapper<User> {
+    @Select("select id,name,password from user where name=#{name}")
+    User getUserByName(String name);
 
-   /**
-    * 获取所有user
-    * @return
-    */
-   List<User> getUsers();
+    @Delete("delete from user_role where uid=#{uid} and rid=#{rid}")
+    Integer deleteRole(int uid,int rid);
 
-   /**
-    * 保存user
-    * @param user
-    */
-   void saveUser(User user);
+    @Insert("insert into user_role values(#{uid},#{rid})")
+    Integer setRole(int uid,int rid);
 
-   /**
-    * 通过num删除user
-    * @param num
-    */
-   void deleteUserByNum(int num);
-
-   /**
-    * 更新当前登录用户的姓名，不限权
-    * @param user
-    */
-   void updateUserName(User user);
-
-   /**
-    * 更新指定用户角色，需要管理员权限
-    * @param user
-    */
-   void updateUserRole(User user);
+    @Select("select rid from user_role where uid=#{uid}")
+    int getRole(int uid);
 
 }

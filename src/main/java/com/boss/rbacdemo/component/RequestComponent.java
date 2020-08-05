@@ -11,11 +11,12 @@ import org.springframework.web.context.request.RequestContextHolder;
 public class RequestComponent {
     public int getUid() {
         return (int) RequestContextHolder.currentRequestAttributes()
-                .getAttribute("num", RequestAttributes.SCOPE_REQUEST);
+                .getAttribute("uid", RequestAttributes.SCOPE_REQUEST);
     }
 
     public int getRole() {
         return (int) RequestContextHolder.currentRequestAttributes()
                 .getAttribute("role", RequestAttributes.SCOPE_REQUEST);
     }
+
 }
