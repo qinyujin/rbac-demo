@@ -39,9 +39,15 @@ public class RoleServiceImpl implements RoleService {
         return roleDao.insert(role);
     }
 
+    /**
+     * 搁置
+     * @param dto
+     * @return
+     */
     @Override
     public Integer setMenu(RoleMenuDTO dto) {
-        return roleDao.setMenu(dto.getRid(), dto.getMid());
+        /*return roleDao.setMenu(dto.getRid(), dto.getMid());*/
+        return null;
     }
 
     @Override

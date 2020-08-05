@@ -1,12 +1,17 @@
 package com.boss.rbacdemo.contoller;
 
 import com.boss.rbacdemo.component.RequestComponent;
+import com.boss.rbacdemo.component.TransferToUserVOComponent;
+import com.boss.rbacdemo.contoller.vo.UserVO;
 import com.boss.rbacdemo.entity.User;
 import com.boss.rbacdemo.service.UserService;
+import com.boss.rbacdemo.service.dto.UserDTO;
+import com.boss.rbacdemo.service.dto.UserRoleDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,21 +27,103 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserService userService;
+
     @Autowired
     private RequestComponent requestComponent;
 
+    @Autowired
+    private TransferToUserVOComponent transfer;
+
+    /**
+     * 查看用户列表
+     *
+     * @return
+     */
+    @GetMapping("listUser")
+    private Map getUserList() {
+        List<User> users = userService.getUsers();
+        return Map.of("users:", users);
+    }
+
+    /**
+     * 增添用户
+     *
+     * @param user
+     * @return
+     */
     @PostMapping("saveUser")
     private Map saveUser(@RequestBody User user) {
         userService.saveUser(user);
-        return Map.of("user", user);
+        UserVO userVO = transfer.transferToVO(user);
+        return Map.of("user", userVO);
     }
 
+    /**
+     * 更新当前用户密码
+     *
+     * @param userDTO
+     * @return
+     */
+    @PostMapping("updatePassword")
+    private Map updatePassword(@RequestBody UserDTO userDTO) {
+        userService.updatePassword(userDTO);
+        User newUser = userService.getUserById(userDTO.getId());
+        UserVO userVO = transfer.transferToVO(newUser);
+        return Map.of("newUser", userVO);
+    }
+
+    /**
+     * 获取当前用户信息
+     *
+     * @return
+     */
     @GetMapping("getUser")
-    private Map getUserById(){
+    private Map getUserById() {
         int uid = requestComponent.getUid();
         User user = userService.getUserById(uid);
-        return Map.of("user",user);
+        UserVO userVO = transfer.transferToVO(user);
+        return Map.of("user", userVO);
     }
 
+    /**
+     * 设置角色
+     *
+     * @param urd
+     * @return
+     */
+    @PostMapping("setRole")
+    private Map setRole(@RequestBody UserRoleDTO urd) {
+        userService.setRole(urd);
+        User user = userService.getUserById(urd.getUid());
+        UserVO userVO = transfer.transferToVO(user);
+        return Map.of("user", userVO);
+    }
+
+    /**
+     * 删除角色
+     *
+     * @param urd
+     * @return
+     */
+    @PostMapping("deleteRole")
+    private Map deleteRole(@RequestBody UserRoleDTO urd) {
+        userService.deleteRole(urd);
+        User user = userService.getUserById(urd.getUid());
+        UserVO userVO = transfer.transferToVO(user);
+        return Map.of("user", userVO);
+    }
+
+    /**
+     * 删除用户
+     *
+     * @param urd
+     * @return
+     */
+    @PostMapping("deleteUser")
+    private Map deleteUser(@RequestBody UserRoleDTO urd) {
+        User user = userService.getUserById(urd.getUid());
+        userService.deleteUserById(urd.getUid());
+        return Map.of("deletedUser", user);
+    }
 
 }

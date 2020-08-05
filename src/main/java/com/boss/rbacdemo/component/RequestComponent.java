@@ -5,6 +5,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
 /**
+ * @author 覃玉锦
  * 提供从request中取id或者role
  */
 @Component

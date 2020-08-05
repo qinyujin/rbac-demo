@@ -1,0 +1,71 @@
+POST http://localhost:8080/api/user/deleteUser
+Authorization: cf73ba99831d6e3edb567a3ac27287fd9209aae0a070371344bc7655c8d67905a95e9f6878976ed1985888ae5e74ae69
+Content-Type: application/json
+
+{
+  "uid": 2
+}
+
+###
+### 删除角色
+POST http://localhost:8080/api/user/deleteRole
+Authorization: cf73ba99831d6e3edb567a3ac27287fd9209aae0a070371344bc7655c8d67905a95e9f6878976ed1985888ae5e74ae69
+Content-Type: application/json
+
+{
+  "uid": 7,
+  "rid": 2
+}
+
+
+###  设置角色
+POST http://localhost:8080/api/user/setRole
+Authorization: cf73ba99831d6e3edb567a3ac27287fd9209aae0a070371344bc7655c8d67905a95e9f6878976ed1985888ae5e74ae69
+Content-Type: application/json
+
+{
+  "uid": 7,
+  "rid": 2
+}
+
+###   更新密码
+POST http://localhost:8080/api/user/updatePassword
+Authorization: cf73ba99831d6e3edb567a3ac27287fd9209aae0a070371344bc7655c8d67905a95e9f6878976ed1985888ae5e74ae69
+Content-Type: application/json
+
+{
+  "id": 7,
+  "password": "123456"
+}
+
+###   查看所有用户
+GET http://localhost:8080/api/user/listUser
+Authorization: cf73ba99831d6e3edb567a3ac27287fd9209aae0a070371344bc7655c8d67905a95e9f6878976ed1985888ae5e74ae69
+Accept: application/json
+
+
+### 登录
+POST http://localhost:8080/api/login
+Content-Type: application/json
+
+{
+  "name": "K3",
+  "password": "123456"
+}
+
+###   获取当前用户信息,应该使用封装类vo
+GET http://localhost:8080/api/user/getUser
+Authorization: 5b8e629e638154e88bacfa160a7bb7d154efe6a7abeff4f6c7851b1afd7e23b55eb5b5b44c08c7f88ea8d217893aff4a
+Accept: application/json
+
+###   添加用户
+POST http://localhost:8080/api/user/saveUser
+Authorization: 5b8e629e638154e88bacfa160a7bb7d154efe6a7abeff4f6c7851b1afd7e23b55eb5b5b44c08c7f88ea8d217893aff4a
+Content-Type: application/json
+
+{
+  "name": "老王",
+  "password": "123456"
+}
+
+###

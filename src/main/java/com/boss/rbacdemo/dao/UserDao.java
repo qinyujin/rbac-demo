@@ -1,13 +1,14 @@
 package com.boss.rbacdemo.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.boss.rbacdemo.dao.po.UserRolePO;
 import com.boss.rbacdemo.entity.User;
 import org.apache.ibatis.annotations.*;
 
 /**
  * @author :覃玉锦
  * @create :2020-08-03 18:09:00
- * 对Employee的crud
+ * 对User的crud
  */
 @Mapper
 public interface UserDao extends BaseMapper<User> {
@@ -15,12 +16,12 @@ public interface UserDao extends BaseMapper<User> {
     User getUserByName(String name);
 
     @Delete("delete from user_role where uid=#{uid} and rid=#{rid}")
-    Integer deleteRole(int uid,int rid);
+    Integer deleteRole(UserRolePO userRolePO);
 
     @Insert("insert into user_role values(#{uid},#{rid})")
-    Integer setRole(int uid,int rid);
+    Integer setRole(UserRolePO userRolePO);
 
     @Select("select rid from user_role where uid=#{uid}")
-    int getRole(int uid);
+    Integer getRole(int uid);
 
 }

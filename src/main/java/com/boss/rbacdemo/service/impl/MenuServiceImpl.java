@@ -38,8 +38,14 @@ return         menuDao.selectList(new QueryWrapper<>());
         return menuDao.deleteById(id);
     }
 
+    /**
+     * 搁置
+     * @param dto
+     * @return
+     */
     @Override
     public Integer setPermission(MenuPermissionDTO dto) {
-        return menuDao.setPermission(dto.getMid(), dto.getPid());
+        /*return menuDao.setPermission(dto.getMid(), dto.getPid());*/
+        return null;
     }
 }

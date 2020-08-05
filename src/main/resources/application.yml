@@ -13,6 +13,3 @@ logging:
   level:
     root: warn
     com.boss: debug
-
-mybatis-plus:
-  config-location:

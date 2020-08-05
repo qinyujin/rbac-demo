@@ -20,6 +20,7 @@ import java.util.Map;
 /**
  * @author :覃玉锦
  * @create :2020-08-03 21:12:00
+ * 登录,校验用户名密码后将用户id,角色信息封装成token存入header里
  */
 @RestController
 @RequestMapping("/api/")
@@ -41,7 +42,7 @@ public class LoginController {
         log.debug("{}", u.getId());
 //        用户名和密码匹配成功
         if (u != null && encoder.matches(user.getPassword(), u.getPassword())) {
-//            必须保证用户有对应角色,不然抛异常
+//        必须保证用户有对应角色,不然抛异常
             int role = userService.getRole(u.getId());
             MyToken token = new MyToken(u.getId(), role);
             String auth = encryptComponent.encryptToken(token);
@@ -50,6 +51,6 @@ public class LoginController {
         } else {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "用户名密码错误");
         }
-        return Map.of("user",u);
+        return Map.of("user", u);
     }
 }

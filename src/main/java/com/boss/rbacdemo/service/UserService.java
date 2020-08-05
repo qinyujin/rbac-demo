@@ -15,12 +15,14 @@ import java.util.List;
 public interface UserService {
     /**
      * 获取所有用户
+     *
      * @return
      */
     List<User> getUsers();
 
     /**
      * 根据id获取用户
+     *
      * @param id
      * @return
      */
@@ -28,6 +30,7 @@ public interface UserService {
 
     /**
      * 获取用户
+     *
      * @param name
      * @return
      */
@@ -35,6 +38,7 @@ public interface UserService {
 
     /**
      * 添加用户
+     *
      * @param user
      * @return
      */
@@ -42,6 +46,7 @@ public interface UserService {
 
     /**
      * 更新密码
+     *
      * @param userDTO
      * @return
      */
@@ -49,6 +54,7 @@ public interface UserService {
 
     /**
      * 根据id删除用户
+     *
      * @param id
      * @return
      */
@@ -56,6 +62,7 @@ public interface UserService {
 
     /**
      * 设置角色
+     *
      * @param userRoleDTO
      * @return
      */
@@ -63,9 +70,18 @@ public interface UserService {
 
     /**
      * 获取用户角色
+     *
      * @param uid
      * @return
      */
     Integer getRole(int uid);
+
+    /**
+     * 删除角色
+     *
+     * @param userRoleDTO
+     * @return
+     */
+    Integer deleteRole(UserRoleDTO userRoleDTO);
 
 }
