@@ -53,5 +53,15 @@ public interface RoleService {
      */
     Integer setMenu(RoleMenuDTO dto);
 
+    /**
+     * 删除菜单
+     * @param dto
+     * @return
+     */
+    Integer deleteMenu(RoleMenuDTO dto);
+
+    List<Integer> getMenu(int rid);
+
+
 
 }

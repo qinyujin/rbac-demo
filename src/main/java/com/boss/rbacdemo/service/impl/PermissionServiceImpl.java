@@ -17,6 +17,7 @@ import java.util.List;
 public class PermissionServiceImpl implements PermissionService {
     @Autowired
     private PermissionDao permissionDao;
+
     @Override
     public List<Permission> getPermissiones() {
         return permissionDao.selectList(new QueryWrapper<>());
@@ -25,6 +26,11 @@ public class PermissionServiceImpl implements PermissionService {
     @Override
     public Permission getPermissionById(int id) {
         return permissionDao.selectById(id);
+    }
+
+    @Override
+    public Permission getPermissionByName(String name) {
+        return permissionDao.getPermissionByName(name);
     }
 
     @Override

@@ -43,6 +43,7 @@ public class UserInterceptor implements HandlerInterceptor {
 
         log.debug("进入 角色请求拦截器");
 
+
         Set<Integer> pids=new HashSet<>();
         pids.clear();
         int roleId = requestComponent.getRole();

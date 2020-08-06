@@ -29,7 +29,10 @@ public class WebConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/api/login");
 
 //        由于我还在写接口,暂时不需要权限限制,先注掉.
-        /*registry.addInterceptor(userInterceptor)
-                .addPathPatterns("/api/user/**");*/
+        registry.addInterceptor(userInterceptor)
+                .addPathPatterns("/api/user/**")
+                .addPathPatterns("/api/menu/**")
+                .addPathPatterns("/api/role/**")
+                .addPathPatterns("/api/permission/**");
     }
 }

@@ -26,6 +26,13 @@ public interface MenuService {
     Menu getMenuById(int id);
 
     /**
+     * 获取菜单
+     * @param name
+     * @return
+     */
+    Menu getMenuByName(String name);
+
+    /**
      * 添加菜单
      * @param menu
      * @return
@@ -45,4 +52,15 @@ public interface MenuService {
      * @return
      */
     Integer setPermission(MenuPermissionDTO dto);
+
+    Integer deletePermission(MenuPermissionDTO mpd);
+
+    List<Integer> getPermissiones(int mid);
+
+    /**
+     * 获取角色菜单
+     * @param rid
+     * @return
+     */
+    String getRoleMenu(int rid);
 }

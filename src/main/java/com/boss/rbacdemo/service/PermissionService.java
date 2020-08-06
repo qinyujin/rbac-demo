@@ -24,6 +24,8 @@ public interface PermissionService {
      */
     Permission getPermissionById(int id);
 
+    Permission getPermissionByName(String name);
+
     /**
      * 添加权限
      * @param permission

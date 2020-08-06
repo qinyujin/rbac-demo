@@ -7,10 +7,10 @@ import com.boss.rbacdemo.dao.UserDao;
 import com.boss.rbacdemo.interceptor.UserInterceptor;
 import com.boss.rbacdemo.service.RoleService;
 import com.boss.rbacdemo.service.UserService;
-import com.boss.rbacdemo.service.dto.UserRoleDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootTest
 class RbacDemoApplicationTests {
@@ -34,6 +34,9 @@ class RbacDemoApplicationTests {
 
     @Autowired
     private UserInterceptor userInterceptor;
+
+    @Autowired
+    private PasswordEncoder encoder;
 
     @Test
     void testUserManager() {
@@ -171,10 +174,9 @@ class RbacDemoApplicationTests {
 
     @Test
     void testAny() {
-        UserRoleDTO urd = new UserRoleDTO();
-        urd.setUid(7);
-        urd.setRid(2);
-       userService.deleteRole(urd);
+        String encode = encoder.encode("123456");
+        System.out.println(encode);
+        System.out.println(encoder.matches("123456", encode));
     }
 
 }

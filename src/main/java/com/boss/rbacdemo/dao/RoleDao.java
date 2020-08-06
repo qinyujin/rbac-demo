@@ -16,15 +16,16 @@ import java.util.List;
  */
 @Mapper
 public interface RoleDao extends BaseMapper<Role> {
-    @Delete("delete from role_menu where rid=#{rid} and mid=#{mid}")
-    Integer deleteMenu(RoleMenuPO roleMenuPO);
+    @Select("select id,name from role where name=#{name}")
+    Role getRoleByName(String name);
 
     @Insert("insert into role_menu values(#{rid},#{mid})")
     Integer setMenu(RoleMenuPO roleMenuPO);
 
-    @Select("select id,name from role where name=#{name}")
-    Role getRoleByName(String name);
+    @Delete("delete from role_menu where rid=#{rid} and mid=#{mid}")
+    Integer deleteMenu(RoleMenuPO roleMenuPO);
 
     @Select("SELECT mid FROM role_menu WHERE rid=#{rid}")
     List<Integer> getMenus(int rid);
+
 }

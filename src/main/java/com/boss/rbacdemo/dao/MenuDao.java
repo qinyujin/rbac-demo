@@ -22,4 +22,10 @@ public interface MenuDao extends BaseMapper<Menu> {
 
     @Select("select pid from menu_permission where mid =#{mid}")
     List<Integer> getPermissiones(int mid);
+
+    @Select("select id,name,url,parent_id from menu where name=#{name}")
+    Menu getMenuByName(String name);
+
+    @Select("SELECT url from menu where id= (SELECT mid from role_menu where rid=#{rid})")
+    String getRoleMenu(int rid);
 }

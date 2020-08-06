@@ -53,6 +53,7 @@ public class UserController {
      */
     @PostMapping("saveUser")
     private Map saveUser(@RequestBody User user) {
+        log.debug("SaveUser json User{}", user);
         userService.saveUser(user);
         UserVO userVO = transfer.transferToVO(user);
         return Map.of("user", userVO);
@@ -123,7 +124,7 @@ public class UserController {
     private Map deleteUser(@RequestBody UserRoleDTO urd) {
         User user = userService.getUserById(urd.getUid());
         userService.deleteUserById(urd.getUid());
-        return Map.of("deletedUser", user);
+        return Map.of("deletedUser", "成功");
     }
 
 }
