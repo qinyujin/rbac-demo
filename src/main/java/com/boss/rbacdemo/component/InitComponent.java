@@ -89,7 +89,7 @@ public class InitComponent implements InitializingBean {
 
         //初始化超级管理角色一个管理员菜单
         List<Integer> menus = roleService.getMenu(1);
-        if (menus.size() == 0) {
+        if (menus.isEmpty()) {
             RoleMenuDTO rmd = new RoleMenuDTO();
             rmd.setRid(1);
             rmd.setMid(1);
@@ -98,7 +98,7 @@ public class InitComponent implements InitializingBean {
 
         //初始化管理员菜单拥有所有全新啊
         List<Integer> permissiones = menuService.getPermissiones(1);
-        if (permissiones.size() == 0) {
+        if (permissiones.isEmpty()) {
             List<Permission> permissiones1 = permissionService.getPermissiones();
             MenuPermissionDTO mpd = new MenuPermissionDTO();
             for (Permission permission : permissiones1) {
