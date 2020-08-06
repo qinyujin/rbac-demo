@@ -24,13 +24,12 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String auth = request.getHeader(MyToken.AUTHORIZATION);
-        if(auth!=null){
+        if (auth != null) {
             MyToken myToken = encryptComponent.decryptToken(auth);
             request.setAttribute("uid", myToken.getUid());
             request.setAttribute("role", myToken.getRole());
-        }
-        else {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,"未登录");
+        } else {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "未登录");
         }
 
         return true;

@@ -24,11 +24,12 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        //登录拦截器
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/api/**")
                 .excludePathPatterns("/api/login");
 
-//        由于我还在写接口,暂时不需要权限限制,先注掉.
+        //用户权限拦截器
         registry.addInterceptor(userInterceptor)
                 .addPathPatterns("/api/user/**")
                 .addPathPatterns("/api/menu/**")

@@ -13,21 +13,29 @@ import java.util.List;
 public interface PermissionService {
     /**
      * 获取权限列表
+     *
      * @return
      */
     List<Permission> getPermissiones();
 
     /**
      * 获取权限
+     *
      * @param id
      * @return
      */
     Permission getPermissionById(int id);
 
+    /**
+     * 获取权限
+     * @param name
+     * @return
+     */
     Permission getPermissionByName(String name);
 
     /**
      * 添加权限
+     *
      * @param permission
      * @return
      */
@@ -35,6 +43,7 @@ public interface PermissionService {
 
     /**
      * 删除权限
+     *
      * @param id
      * @return
      */

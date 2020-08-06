@@ -40,8 +40,8 @@ public class LoginController {
         log.debug("json User：{}", user);
         User u = userService.getUserByName(user.getName());
         log.debug("用户：{}", u);
-        log.debug("123456密码校验情况：{}", encoder.matches("123456",u.getPassword()));
-        log.debug("user传来的密码校验情况：{}", encoder.matches(user.getPassword(),u.getPassword()));
+        log.debug("123456密码校验情况：{}", encoder.matches("123456", u.getPassword()));
+        log.debug("user传来的密码校验情况：{}", encoder.matches(user.getPassword(), u.getPassword()));
 //        用户名和密码匹配成功
         if (u != null && encoder.matches(user.getPassword(), u.getPassword())) {
 //        必须保证用户有对应角色,不然抛异常

@@ -29,7 +29,7 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public Integer deletePermission(MenuPermissionDTO mpd) {
         MenuPermissionPO mpo = new MenuPermissionPO();
-        BeanUtils.copyProperties(mpd,mpo);
+        BeanUtils.copyProperties(mpd, mpo);
         return menuDao.deletePermission(mpo);
     }
 

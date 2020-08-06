@@ -8,6 +8,7 @@ import lombok.Data;
  */
 @Data
 public class RoleMenuDTO {
-    private int rid;
-    private int mid;
+    private Integer rid;
+
+    private Integer mid;
 }

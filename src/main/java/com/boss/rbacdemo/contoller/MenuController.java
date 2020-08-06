@@ -16,6 +16,7 @@ import java.util.Map;
 /**
  * @author :覃玉锦
  * @create :2020-08-06 09:45:00
+ * 菜单管理
  */
 @RestController
 @RequestMapping("/api/menu/")
@@ -26,6 +27,7 @@ public class MenuController {
 
     @Autowired
     private PermissionService permissionService;
+
     @Autowired
     private RequestComponent requestComponent;
 
@@ -33,46 +35,48 @@ public class MenuController {
     public Map listMenu() {
         List<Menu> menus = menuService.getMenus();
 
-        return Map.of("menus",menus);
+        return Map.of("menus", menus);
     }
 
     @PostMapping("saveMenu")
-    public Map saveMenu(@RequestBody Menu menu){
+    public Map saveMenu(@RequestBody Menu menu) {
         menuService.saveMenu(menu);
         Menu m = menuService.getMenuByName(menu.getName());
-        return Map.of("save menu",m);
+        return Map.of("save menu", m);
     }
 
     @PostMapping("deleteMenu")
-    public Map deleteMenu(@RequestBody Menu menu){
+    public Map deleteMenu(@RequestBody Menu menu) {
         Menu m = menuService.getMenuById(menu.getId());
         menuService.deleteMenuById(menu.getId());
-        return Map.of("delete menu",m);
+        return Map.of("delete menu", m);
     }
 
     @PostMapping("setPermission")
-    public Map setPermission(@RequestBody MenuPermissionDTO mpd){
+    public Map setPermission(@RequestBody MenuPermissionDTO mpd) {
         menuService.setPermission(mpd);
         Permission permission = permissionService.getPermissionById(mpd.getPid());
-        return Map.of("set permission",permission);
+        return Map.of("set permission", permission);
     }
 
     @PostMapping("deletePermisson")
-    public Map deletePermission(@RequestBody MenuPermissionDTO mpd){
+    public Map deletePermission(@RequestBody MenuPermissionDTO mpd) {
         menuService.deletePermission(mpd);
         Permission permission = permissionService.getPermissionById(mpd.getPid());
-        return Map.of("delete permission",permission);
+        return Map.of("delete permission", permission);
     }
 
     /**
      * 返回用户对应的菜单的url，前端就是根据不同的url来显示不同的页面
-     * @return*/
+     *
+     * @return
+     */
     @GetMapping("getUserMenu")
-    public Map getUserMenu(){
+    public Map getUserMenu() {
         int role = requestComponent.getRole();
         log.debug("Role in MenuController:{}", role);
         String menuUrl = menuService.getRoleMenu(role);
-        String urlHead="http://127.0.0.1:8080/";
-        return Map.of("跳转到页面:",urlHead+menuUrl);
+        String urlHead = "http://127.0.0.1:8080/";
+        return Map.of("跳转到页面:", urlHead + menuUrl);
     }
 }

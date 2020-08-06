@@ -10,15 +10,17 @@ import org.springframework.stereotype.Component;
 /**
  * @author :覃玉锦
  * @create :2020-08-05 21:13:00
+ * 把user转换成uservo
  */
 @Component
 public class TransferToUserVOComponent {
     @Autowired
     private RoleDao roleDao;
+
     @Autowired
     private RequestComponent requestComponent;
 
-    public UserVO transferToVO(User user){
+    public UserVO transferToVO(User user) {
         UserVO userVO = new UserVO();
         userVO.setId(user.getId());
         userVO.setName(user.getName());

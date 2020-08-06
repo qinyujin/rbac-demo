@@ -40,7 +40,7 @@ public class UserController {
      * @return
      */
     @GetMapping("listUser")
-    private Map getUserList() {
+    public Map getUserList() {
         List<User> users = userService.getUsers();
         return Map.of("users:", users);
     }
@@ -52,7 +52,7 @@ public class UserController {
      * @return
      */
     @PostMapping("saveUser")
-    private Map saveUser(@RequestBody User user) {
+    public Map saveUser(@RequestBody User user) {
         log.debug("SaveUser json User{}", user);
         userService.saveUser(user);
         UserVO userVO = transfer.transferToVO(user);
@@ -66,7 +66,7 @@ public class UserController {
      * @return
      */
     @PostMapping("updatePassword")
-    private Map updatePassword(@RequestBody UserDTO userDTO) {
+    public Map updatePassword(@RequestBody UserDTO userDTO) {
         userService.updatePassword(userDTO);
         User newUser = userService.getUserById(userDTO.getId());
         UserVO userVO = transfer.transferToVO(newUser);
@@ -79,7 +79,7 @@ public class UserController {
      * @return
      */
     @GetMapping("getUser")
-    private Map getUserById() {
+    public Map getUserById() {
         int uid = requestComponent.getUid();
         User user = userService.getUserById(uid);
         UserVO userVO = transfer.transferToVO(user);
@@ -93,7 +93,7 @@ public class UserController {
      * @return
      */
     @PostMapping("setRole")
-    private Map setRole(@RequestBody UserRoleDTO urd) {
+    public Map setRole(@RequestBody UserRoleDTO urd) {
         userService.setRole(urd);
         User user = userService.getUserById(urd.getUid());
         UserVO userVO = transfer.transferToVO(user);
@@ -107,7 +107,7 @@ public class UserController {
      * @return
      */
     @PostMapping("deleteRole")
-    private Map deleteRole(@RequestBody UserRoleDTO urd) {
+    public Map deleteRole(@RequestBody UserRoleDTO urd) {
         userService.deleteRole(urd);
         User user = userService.getUserById(urd.getUid());
         UserVO userVO = transfer.transferToVO(user);
@@ -121,8 +121,8 @@ public class UserController {
      * @return
      */
     @PostMapping("deleteUser")
-    private Map deleteUser(@RequestBody UserRoleDTO urd) {
-        User user = userService.getUserById(urd.getUid());
+    public Map deleteUser(@RequestBody UserRoleDTO urd) {
+        userService.getUserById(urd.getUid());
         userService.deleteUserById(urd.getUid());
         return Map.of("deletedUser", "成功");
     }

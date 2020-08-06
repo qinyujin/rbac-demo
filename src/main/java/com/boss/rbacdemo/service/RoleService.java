@@ -14,12 +14,14 @@ import java.util.List;
 public interface RoleService {
     /**
      * 获取角色列表
+     *
      * @return
      */
     List<Role> getRoles();
 
     /**
      * 通过id获取角色
+     *
      * @param id
      * @return
      */
@@ -27,6 +29,7 @@ public interface RoleService {
 
     /**
      * 获取角色
+     *
      * @param roleName
      * @return
      */
@@ -34,6 +37,7 @@ public interface RoleService {
 
     /**
      * 添加角色
+     *
      * @param role
      * @return
      */
@@ -41,6 +45,7 @@ public interface RoleService {
 
     /**
      * 删除角色
+     *
      * @param id
      * @return
      */
@@ -48,6 +53,7 @@ public interface RoleService {
 
     /**
      * 设置菜单
+     *
      * @param dto
      * @return
      */
@@ -55,13 +61,18 @@ public interface RoleService {
 
     /**
      * 删除菜单
+     *
      * @param dto
      * @return
      */
     Integer deleteMenu(RoleMenuDTO dto);
 
+    /**
+     * 获取角色对应菜单
+     *
+     * @param rid
+     * @return
+     */
     List<Integer> getMenu(int rid);
-
-
 
 }

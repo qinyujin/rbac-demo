@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserRoleDTO {
-    private int uid;
-    private int rid;
+    private Integer uid;
+
+    private Integer rid;
 }

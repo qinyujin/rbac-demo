@@ -32,25 +32,25 @@ public class UserInterceptor implements HandlerInterceptor {
 
     @Autowired
     private RoleDao roleDao;
+
     @Autowired
     private MenuDao menuDao;
+
     @Autowired
     private PermissionDao permissionDao;
-
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         log.debug("进入 角色请求拦截器");
 
-
-        Set<Integer> pids=new HashSet<>();
+        Set<Integer> pids = new HashSet<>();
         pids.clear();
         int roleId = requestComponent.getRole();
-        log.debug("rid:{}",roleId);
+        log.debug("rid:{}", roleId);
 
         List<Integer> menusId = roleDao.getMenus(roleId);
-        menusId.forEach(m ->{
+        menusId.forEach(m -> {
             List<Integer> permissiones = menuDao.getPermissiones(m);
             pids.addAll(permissiones);
         });
@@ -59,7 +59,7 @@ public class UserInterceptor implements HandlerInterceptor {
 //        pnames:权限名称集,可以通过这个来判断请求是否再当前权限集中
         List<String> pNames = new ArrayList<>();
         pNames.clear();
-        pids.forEach(p ->{
+        pids.forEach(p -> {
             Permission permission = permissionDao.selectById(p);
             log.debug("权限:{}", permission);
             pNames.add(permission.getUrl());
@@ -71,10 +71,10 @@ public class UserInterceptor implements HandlerInterceptor {
 
 //      检验请求发出的url是否在权限集url中,
         for (String pName : pNames) {
-            if(req.contains(pName)){
+            if (req.contains(pName)) {
                 return true;
             }
         }
-        throw new ResponseStatusException(HttpStatus.FORBIDDEN,"无权限");
+        throw new ResponseStatusException(HttpStatus.FORBIDDEN, "无权限");
     }
 }

@@ -25,7 +25,7 @@ import java.util.List;
  */
 @Component
 @Slf4j
-public class initComponent implements InitializingBean {
+public class InitComponent implements InitializingBean {
     @Autowired
     private UserService userService;
 
@@ -38,16 +38,15 @@ public class initComponent implements InitializingBean {
     @Autowired
     private PermissionService permissionService;
 
-
     @Autowired
     private PasswordEncoder encoder;
 
     @Override
     public void afterPropertiesSet() throws Exception {
         //初始化一个菜单
-        String initMenu="超级管理员菜单";
+        String initMenu = "超级管理员菜单";
         Menu menu = menuService.getMenuByName(initMenu);
-        if(menu==null){
+        if (menu == null) {
             Menu m = new Menu();
             m.setId(1);
             m.setUrl("/superadmin");
@@ -57,9 +56,9 @@ public class initComponent implements InitializingBean {
         }
 
         //初始化一个角色
-        String initRole="超级管理员";
+        String initRole = "超级管理员";
         Role role = roleService.getRoleByName(initRole);
-        if(role==null){
+        if (role == null) {
             Role r = new Role();
             r.setId(1);
             r.setName("超级管理员");
@@ -67,10 +66,10 @@ public class initComponent implements InitializingBean {
         }
 
         //初始化超级用户,用户名：Qin,密码：123456
-        String initName="Qin";
-        String initPassword="123456";
+        String initName = "Qin";
+        String initPassword = "123456";
         User user = userService.getUserByName(initName);
-        if(user == null){
+        if (user == null) {
             User u = new User();
             u.setId(1);
             u.setName(initName);
@@ -81,7 +80,7 @@ public class initComponent implements InitializingBean {
 
         //将初始用户角色置为超级管理员
         Integer userRole = userService.getRole(1);
-        if(userRole==null){
+        if (userRole == null) {
             UserRoleDTO urd = new UserRoleDTO();
             urd.setUid(1);
             urd.setRid(1);
@@ -90,7 +89,7 @@ public class initComponent implements InitializingBean {
 
         //初始化超级管理角色一个管理员菜单
         List<Integer> menus = roleService.getMenu(1);
-        if(menus.size()==0){
+        if (menus.size() == 0) {
             RoleMenuDTO rmd = new RoleMenuDTO();
             rmd.setRid(1);
             rmd.setMid(1);
@@ -99,7 +98,7 @@ public class initComponent implements InitializingBean {
 
         //初始化管理员菜单拥有所有全新啊
         List<Integer> permissiones = menuService.getPermissiones(1);
-        if(permissiones.size()==0){
+        if (permissiones.size() == 0) {
             List<Permission> permissiones1 = permissionService.getPermissiones();
             MenuPermissionDTO mpd = new MenuPermissionDTO();
             for (Permission permission : permissiones1) {

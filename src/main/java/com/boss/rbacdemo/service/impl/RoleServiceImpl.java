@@ -21,7 +21,6 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleDao roleDao;
 
-
     @Override
     public Integer deleteMenu(RoleMenuDTO dto) {
         RoleMenuPO rmp = new RoleMenuPO();

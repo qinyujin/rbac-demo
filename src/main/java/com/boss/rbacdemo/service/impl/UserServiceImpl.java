@@ -51,15 +51,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Integer saveUser(User user) {
-        log.debug("编码之前的密码：{}",user.getPassword());
+        log.debug("编码之前的密码：{}", user.getPassword());
         String encode = encoder.encode(user.getPassword());
-        log.debug("密码加密成功{}",encode );
+        log.debug("密码加密成功{}", encode);
         user.setPassword(encode);
         int insert = userDao.insert(user);
         User u = userDao.getUserByName(user.getName());
-//        默认角色为员工
-        /*UserRolePO urp = new UserRolePO(u.getId(),2);
-        userDao.setRole(urp);*/
         return insert;
     }
 

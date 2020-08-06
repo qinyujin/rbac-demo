@@ -9,6 +9,11 @@ import org.apache.ibatis.annotations.Select;
  * @create :2020-08-05 09:22:00
  */
 public interface PermissionDao extends BaseMapper<Permission> {
+    /**
+     * 获取权限
+     * @param name
+     * @return
+     */
     @Select("select id,name,url from permission where name=#{name}")
     Permission getPermissionByName(String name);
 }

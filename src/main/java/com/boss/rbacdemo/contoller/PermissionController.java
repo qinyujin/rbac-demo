@@ -11,6 +11,7 @@ import java.util.Map;
 /**
  * @author :覃玉锦
  * @create :2020-08-06 10:10:00
+ * 权限管理
  */
 @RestController
 @RequestMapping("/api/permission/")
@@ -19,23 +20,23 @@ public class PermissionController {
     private PermissionService permissionService;
 
     @GetMapping("listPermission")
-    public Map listPermission(){
+    public Map listPermission() {
         List<Permission> permissiones = permissionService.getPermissiones();
 
-        return Map.of("permissiones",permissiones);
+        return Map.of("permissiones", permissiones);
     }
 
     @PostMapping("savePermission")
-    public Map savePermission(@RequestBody Permission permission){
+    public Map savePermission(@RequestBody Permission permission) {
         permissionService.savePermission(permission);
         Permission permission1 = permissionService.getPermissionByName(permission.getName());
-        return Map.of("permission",permission1);
+        return Map.of("permission", permission1);
     }
 
     @PostMapping("deletePermission")
-    public Map deletePermission(@RequestBody Permission permission){
+    public Map deletePermission(@RequestBody Permission permission) {
         Permission permission1 = permissionService.getPermissionById(permission.getId());
         permissionService.deletePermissionById(permission.getId());
-        return Map.of("delete permission",permission1);
+        return Map.of("delete permission", permission1);
     }
 }
