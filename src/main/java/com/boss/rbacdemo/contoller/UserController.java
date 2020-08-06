@@ -21,6 +21,7 @@ import java.util.Map;
  * 访问控制:根据权限判断用户是否具有访问api的权限
  * 页面元素:通过返回的url来获取用户相应页面
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/api/user/")
 @Slf4j

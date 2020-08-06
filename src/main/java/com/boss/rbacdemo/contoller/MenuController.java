@@ -18,6 +18,7 @@ import java.util.Map;
  * @create :2020-08-06 09:45:00
  * 菜单管理
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/api/menu/")
 @Slf4j

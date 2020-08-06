@@ -170,7 +170,7 @@ Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81
 Content-Type: application/json
 
 {
-  "name": "王",
+  "name": "Wag",
   "password": "123456"
 }
 

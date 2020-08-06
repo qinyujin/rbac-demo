@@ -13,6 +13,7 @@ import java.util.Map;
  * @create :2020-08-06 10:10:00
  * 权限管理
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/api/permission/")
 public class PermissionController {

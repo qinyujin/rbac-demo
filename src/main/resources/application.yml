@@ -1,6 +1,12 @@
 my.secretkey: R28K42ZEJ8LWRHU5
 my.salt: 636eac2534bcfcb0
 
+#开启gzip压缩，对数据进行压缩
+server:
+  compression:
+    enabled: true
+    mime-types: application/javascript,text/css,application/json,application/xml,text/html,text/xml,text/plain
+
 spring:
   cloud:
     nacos:

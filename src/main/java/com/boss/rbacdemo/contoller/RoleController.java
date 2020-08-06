@@ -16,6 +16,7 @@ import java.util.Map;
  * @create :2020-08-05 21:07:00
  * 角色管理
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/api/role/")
 public class RoleController {
