@@ -1,4 +1,4 @@
-package com.boss.rbacdemo.dao.po;
+package com.boss.rbacdemo.entity.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,13 +6,13 @@ import lombok.NoArgsConstructor;
 
 /**
  * @author :覃玉锦
- * @create :2020-08-05 20:55:00
+ * @create :2020-08-05 12:28:00
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MenuPermissionPO {
-    private int mid;
+public class UserRoleVO {
+    private Integer uid;
 
-    private int pid;
+    private Integer rid;
 }

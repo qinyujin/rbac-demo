@@ -1,5 +1,6 @@
 package com.boss.rbacdemo.component;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -9,6 +10,7 @@ import org.springframework.web.context.request.RequestContextHolder;
  * 提供从request中取id或者role
  */
 @Component
+@Slf4j
 public class RequestComponent {
     public int getUid() {
         return (int) RequestContextHolder.currentRequestAttributes()

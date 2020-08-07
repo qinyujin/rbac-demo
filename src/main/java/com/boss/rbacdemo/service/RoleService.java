@@ -1,7 +1,7 @@
 package com.boss.rbacdemo.service;
 
 import com.boss.rbacdemo.entity.Role;
-import com.boss.rbacdemo.service.dto.RoleMenuDTO;
+import com.boss.rbacdemo.entity.dto.RoleMenuDTO;
 
 import java.util.List;
 

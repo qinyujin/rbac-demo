@@ -1,8 +1,8 @@
 package com.boss.rbacdemo.service;
 
 import com.boss.rbacdemo.entity.User;
-import com.boss.rbacdemo.service.dto.UserDTO;
-import com.boss.rbacdemo.service.dto.UserRoleDTO;
+import com.boss.rbacdemo.entity.dto.UserDTO;
+import com.boss.rbacdemo.entity.dto.UserRoleDTO;
 
 import java.util.List;
 
@@ -50,7 +50,7 @@ public interface UserService {
      * @param userDTO
      * @return
      */
-    Integer updatePassword(UserDTO userDTO);
+    Integer updatePassword(UserDTO userDTO) ;
 
     /**
      * 根据id删除用户

@@ -1,7 +1,7 @@
 package com.boss.rbacdemo.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.boss.rbacdemo.dao.po.UserRolePO;
+import com.boss.rbacdemo.entity.po.UserRolePO;
 import com.boss.rbacdemo.entity.User;
 import org.apache.ibatis.annotations.*;
 

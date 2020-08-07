@@ -47,21 +47,18 @@ public class UserInterceptor implements HandlerInterceptor {
         Set<Integer> pids = new HashSet<>();
         pids.clear();
         int roleId = requestComponent.getRole();
-        log.debug("rid:{}", roleId);
 
         List<Integer> menusId = roleDao.getMenus(roleId);
         menusId.forEach(m -> {
             List<Integer> permissiones = menuDao.getPermissiones(m);
             pids.addAll(permissiones);
         });
-        log.debug("根据角色找出来的权限id集: {}", pids);
 
 //        pnames:权限名称集,可以通过这个来判断请求是否再当前权限集中
         List<String> pNames = new ArrayList<>();
         pNames.clear();
         pids.forEach(p -> {
             Permission permission = permissionDao.selectById(p);
-            log.debug("权限:{}", permission);
             pNames.add(permission.getUrl());
         });
         log.debug("权限集:{}", pNames);

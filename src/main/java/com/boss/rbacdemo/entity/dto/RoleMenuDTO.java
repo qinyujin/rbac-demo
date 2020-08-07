@@ -1,4 +1,4 @@
-package com.boss.rbacdemo.service.dto;
+package com.boss.rbacdemo.entity.dto;
 
 import lombok.Data;
 

@@ -2,10 +2,10 @@ package com.boss.rbacdemo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.boss.rbacdemo.dao.RoleDao;
-import com.boss.rbacdemo.dao.po.RoleMenuPO;
+import com.boss.rbacdemo.entity.po.RoleMenuPO;
 import com.boss.rbacdemo.entity.Role;
 import com.boss.rbacdemo.service.RoleService;
-import com.boss.rbacdemo.service.dto.RoleMenuDTO;
+import com.boss.rbacdemo.entity.dto.RoleMenuDTO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

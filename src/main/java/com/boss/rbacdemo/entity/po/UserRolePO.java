@@ -1,4 +1,4 @@
-package com.boss.rbacdemo.dao.po;
+package com.boss.rbacdemo.entity.po;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

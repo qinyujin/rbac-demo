@@ -1,4 +1,4 @@
-package com.boss.rbacdemo.service.dto;
+package com.boss.rbacdemo.entity.vo;
 
 import lombok.Data;
 
@@ -7,7 +7,7 @@ import lombok.Data;
  * @create :2020-08-05 11:57:00
  */
 @Data
-public class UserDTO {
+public class UserVO {
     private Integer id;
 
     private String password;

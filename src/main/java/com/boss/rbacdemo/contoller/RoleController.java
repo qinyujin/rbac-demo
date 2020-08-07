@@ -1,15 +1,15 @@
 package com.boss.rbacdemo.contoller;
 
+import com.boss.rbacdemo.entity.CommonResult;
 import com.boss.rbacdemo.entity.Menu;
 import com.boss.rbacdemo.entity.Role;
+import com.boss.rbacdemo.entity.dto.RoleMenuDTO;
 import com.boss.rbacdemo.service.MenuService;
 import com.boss.rbacdemo.service.RoleService;
-import com.boss.rbacdemo.service.dto.RoleMenuDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author :覃玉锦
@@ -27,37 +27,40 @@ public class RoleController {
     private MenuService menuService;
 
     @GetMapping("listRole")
-    public Map getRoleList() {
+    public CommonResult getRoleList() {
         List<Role> roles = roleService.getRoles();
-        return Map.of("roles", roles);
+        return new CommonResult(200,"角色列表",roles);
     }
 
     @PostMapping("saveRole")
-    public Map saveRole(@RequestBody Role role) {
+    public CommonResult saveRole(@RequestBody Role role) {
         roleService.saveRole(role);
 
-        return Map.of("save role", role);
+        return new CommonResult(200, "添加角色"+role.getName()+"成功" );
     }
 
     @PostMapping("deleteRole")
-    public Map deleteRole(@RequestBody RoleMenuDTO rmd) {
+    public CommonResult deleteRole(@RequestBody RoleMenuDTO rmd) {
         Role role = roleService.getRoleById(rmd.getRid());
         roleService.deleteRoleById(rmd.getRid());
-        return Map.of("delete role", role);
+        return new CommonResult(200,"删除角色"+role.getName()+"成功" );
     }
 
     @PostMapping("setMenu")
-    public Map setMenu(@RequestBody RoleMenuDTO rmd) {
+    public CommonResult setMenu(@RequestBody RoleMenuDTO rmd) {
         roleService.setMenu(rmd);
         Menu menu = menuService.getMenuById(rmd.getMid());
-        return Map.of("set menu", menu);
+        return new CommonResult(200,"设置角色"+roleService.getRoleById(rmd.getRid())
+        +"的菜单为"+menu.getName()
+        );
     }
 
     @PostMapping("deleteMenu")
-    public Map deleteMenu(@RequestBody RoleMenuDTO rmd) {
+    public CommonResult deleteMenu(@RequestBody RoleMenuDTO rmd) {
         roleService.deleteMenu(rmd);
         Menu menu = menuService.getMenuById(rmd.getMid());
-        return Map.of("delete menu", menu);
+        return new CommonResult(200,"删除角色"+roleService.getRoleById(rmd.getRid())
+        +"的菜单"+menu.getName() );
     }
 
 }

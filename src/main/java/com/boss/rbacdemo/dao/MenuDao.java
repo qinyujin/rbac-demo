@@ -1,7 +1,7 @@
 package com.boss.rbacdemo.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.boss.rbacdemo.dao.po.MenuPermissionPO;
+import com.boss.rbacdemo.entity.po.MenuPermissionPO;
 import com.boss.rbacdemo.entity.Menu;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;

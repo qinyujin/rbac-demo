@@ -2,6 +2,7 @@ package com.boss.rbacdemo.interceptor;
 
 import com.boss.rbacdemo.component.EncryptComponent;
 import com.boss.rbacdemo.component.MyToken;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * 对所有请求进行拦截，如果没有登录则无法访问任何接口，如果登录成功会将常用属性至于request方便使用
  */
 @Component
+@Slf4j
 public class LoginInterceptor implements HandlerInterceptor {
     @Autowired
     private EncryptComponent encryptComponent;

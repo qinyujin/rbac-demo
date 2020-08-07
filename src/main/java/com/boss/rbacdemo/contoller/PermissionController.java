@@ -1,12 +1,12 @@
 package com.boss.rbacdemo.contoller;
 
+import com.boss.rbacdemo.entity.CommonResult;
 import com.boss.rbacdemo.entity.Permission;
 import com.boss.rbacdemo.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author :覃玉锦
@@ -21,23 +21,23 @@ public class PermissionController {
     private PermissionService permissionService;
 
     @GetMapping("listPermission")
-    public Map listPermission() {
+    public CommonResult listPermission() {
         List<Permission> permissiones = permissionService.getPermissiones();
 
-        return Map.of("permissiones", permissiones);
+        return new CommonResult(200,"权限列表", permissiones);
     }
 
     @PostMapping("savePermission")
-    public Map savePermission(@RequestBody Permission permission) {
+    public CommonResult savePermission(@RequestBody Permission permission) {
         permissionService.savePermission(permission);
         Permission permission1 = permissionService.getPermissionByName(permission.getName());
-        return Map.of("permission", permission1);
+        return new CommonResult(200,"添加权限", permission1);
     }
 
     @PostMapping("deletePermission")
-    public Map deletePermission(@RequestBody Permission permission) {
+    public CommonResult deletePermission(@RequestBody Permission permission) {
         Permission permission1 = permissionService.getPermissionById(permission.getId());
         permissionService.deletePermissionById(permission.getId());
-        return Map.of("delete permission", permission1);
+        return new CommonResult(200,"删除权限", permission1);
     }
 }

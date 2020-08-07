@@ -1,7 +1,7 @@
 package com.boss.rbacdemo.service;
 
 import com.boss.rbacdemo.entity.Menu;
-import com.boss.rbacdemo.service.dto.MenuPermissionDTO;
+import com.boss.rbacdemo.entity.dto.MenuPermissionDTO;
 
 import java.util.List;
 

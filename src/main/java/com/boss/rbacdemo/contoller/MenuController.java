@@ -1,17 +1,17 @@
 package com.boss.rbacdemo.contoller;
 
 import com.boss.rbacdemo.component.RequestComponent;
+import com.boss.rbacdemo.entity.CommonResult;
 import com.boss.rbacdemo.entity.Menu;
 import com.boss.rbacdemo.entity.Permission;
+import com.boss.rbacdemo.entity.dto.MenuPermissionDTO;
 import com.boss.rbacdemo.service.MenuService;
 import com.boss.rbacdemo.service.PermissionService;
-import com.boss.rbacdemo.service.dto.MenuPermissionDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author :覃玉锦
@@ -33,38 +33,40 @@ public class MenuController {
     private RequestComponent requestComponent;
 
     @GetMapping("listMenu")
-    public Map listMenu() {
+    public CommonResult listMenu() {
         List<Menu> menus = menuService.getMenus();
 
-        return Map.of("menus", menus);
+        return new CommonResult(200,"菜单列表", menus);
     }
 
     @PostMapping("saveMenu")
-    public Map saveMenu(@RequestBody Menu menu) {
+    public CommonResult saveMenu(@RequestBody Menu menu) {
         menuService.saveMenu(menu);
         Menu m = menuService.getMenuByName(menu.getName());
-        return Map.of("save menu", m);
+        return new CommonResult(200,"添加菜单", m);
     }
 
     @PostMapping("deleteMenu")
-    public Map deleteMenu(@RequestBody Menu menu) {
+    public CommonResult deleteMenu(@RequestBody Menu menu) {
         Menu m = menuService.getMenuById(menu.getId());
         menuService.deleteMenuById(menu.getId());
-        return Map.of("delete menu", m);
+        return new CommonResult(200,"删除菜单："+m.getName());
     }
 
     @PostMapping("setPermission")
-    public Map setPermission(@RequestBody MenuPermissionDTO mpd) {
+    public CommonResult setPermission(@RequestBody MenuPermissionDTO mpd) {
         menuService.setPermission(mpd);
         Permission permission = permissionService.getPermissionById(mpd.getPid());
-        return Map.of("set permission", permission);
+        return new CommonResult(200,"设置菜单"+menuService.getMenuById(mpd.getMid())
+        +"添加权限"+permission.getName());
     }
 
     @PostMapping("deletePermisson")
-    public Map deletePermission(@RequestBody MenuPermissionDTO mpd) {
+    public CommonResult deletePermission(@RequestBody MenuPermissionDTO mpd) {
         menuService.deletePermission(mpd);
         Permission permission = permissionService.getPermissionById(mpd.getPid());
-        return Map.of("delete permission", permission);
+        return new CommonResult(200, "删除菜单"+menuService.getMenuById(mpd.getMid())
+        +"的权限："+permission.getName());
     }
 
     /**
@@ -73,11 +75,11 @@ public class MenuController {
      * @return
      */
     @GetMapping("getUserMenu")
-    public Map getUserMenu() {
+    public CommonResult getUserMenu() {
         int role = requestComponent.getRole();
         log.debug("Role in MenuController:{}", role);
         String menuUrl = menuService.getRoleMenu(role);
         String urlHead = "http://127.0.0.1:8080/";
-        return Map.of("跳转到页面:", urlHead + menuUrl);
+        return new CommonResult(200,"当前用户菜单地址",urlHead+menuUrl);
     }
 }
