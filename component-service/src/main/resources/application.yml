@@ -1,0 +1,25 @@
+my.secretkey: R28K42ZEJ8LWRHU5
+my.salt: 636eac2534bcfcb0
+
+#开启gzip压缩，对数据进行压缩
+server:
+  compression:
+    enabled: true
+    mime-types: application/javascript,text/css,application/json,application/xml,text/html,text/xml,text/plain
+
+spring:
+  redis:
+    password: 123456
+  application:
+    name: component-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bosstrain?characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 957ilovemyfamily
+
+
+logging:
+  level:
+    root: warn
+    com.boss: debug
