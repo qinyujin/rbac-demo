@@ -7,12 +7,14 @@ import com.boss.mvc.entity.dto.UserDTO;
 import com.boss.mvc.entity.dto.UserRoleDTO;
 import com.boss.mvc.entity.po.UserRolePO;
 import com.boss.mvc.service.UserService;
-import com.boss.mvc.util.MvcRequestComponent;
+import com.boss.mvc.util.EncryptUtil;
+import com.boss.mvc.util.MvcMyToken;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import redis.clients.jedis.Jedis;
 
 import java.util.List;
 
@@ -30,7 +32,7 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder encoder;
 
     @Autowired
-    private MvcRequestComponent requestComponent;
+    private EncryptUtil encryptUtil;
 
     @Override
     public List<User> getUsers() {
@@ -51,10 +53,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Integer saveUser(User user) {
-        log.debug("进入saveUser" );
+        log.debug("进入saveUser");
         String encode = encoder.encode(user.getPassword());
         User uDao = userDao.getUserByName(user.getName());
-        if(uDao!=null){
+        if (uDao != null) {
             return 0;
         }
         user.setPassword(encode);
@@ -81,15 +83,30 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer updatePassword(UserDTO userDTO){
-        int uid = requestComponent.getUid();
+    public Integer updatePassword(UserDTO userDTO) {
+        log.info("进入service");
+        //由于不能循环依赖，在这里就不使用component组件了，直接使用redis
+
+//        int uid = requestComponent.getUid();
+        Jedis jedis = new Jedis();
+        jedis.auth("123456");
+        String auth = jedis.get(MvcMyToken.AUTHORIZATION);
+        //auth的引号得去掉
+        String realAuth = auth.substring(1, auth.length() - 1);
+        log.info("auth:"+auth);
+        MvcMyToken mvcMyToken = encryptUtil.decryptToken(realAuth);
+        log.info("Mytoken:"+mvcMyToken.toString());
+        int uid = mvcMyToken.getUid();
+
+        //
         User user = userDao.selectById(uid);
         boolean repeat = encoder.matches(userDTO.getPassword(), user.getPassword());
-        if(repeat){
+        if (repeat) {
             return 0;
         }
         String newPwd = encoder.encode(userDTO.getPassword());
         user.setPassword(newPwd);
+        log.info("退出service");
         return userDao.updateById(user);
     }
 

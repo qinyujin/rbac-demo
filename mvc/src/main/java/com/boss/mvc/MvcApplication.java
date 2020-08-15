@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * @create :2020-08-15 10:16:00
  */
 @SpringBootApplication
-@MapperScan(value = "com.boss.mvc.dao")
+@MapperScan(value = {"com.boss.mvc.dao"})
 public class MvcApplication {
     @Bean
     public PasswordEncoder getPasswordEncoder(){

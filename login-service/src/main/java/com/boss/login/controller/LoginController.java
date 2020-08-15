@@ -48,6 +48,7 @@ public class LoginController {
             if (role == null) throw new ResponseStatusException(HttpStatus.FORBIDDEN, "该用户还没有角色，无法访问");
             MyToken token = new MyToken(u.getId(), role);
             String auth = encryptComponent.encryptToken(token);
+            log.info("存入前的auth："+auth);
             //将编码后的token信息auth存入redis
             redisUtil.set(MyToken.AUTHORIZATION, auth);
             log.debug("用户角色 id：{}", role);

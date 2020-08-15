@@ -1,5 +1,8 @@
 package com.boss.rbac.controller;
 
+import com.boss.component.component.EncryptComponent;
+import com.boss.component.component.MyToken;
+import com.boss.component.component.RedisUtil;
 import com.boss.component.component.RequestComponent;
 import com.boss.mvc.entity.CommonResult;
 import com.boss.mvc.entity.User;
@@ -33,6 +36,12 @@ public class UserController {
 
     @Autowired
     private RequestComponent requestComponent;
+
+    @Autowired
+    private RedisUtil redisUtil;
+
+    @Autowired
+    private EncryptComponent encryptComponent;
 
     /**
      * 查看用户列表
@@ -73,11 +82,19 @@ public class UserController {
      */
     @PostMapping("updatePassword")
     public CommonResult updatePassword(@RequestBody UserVO userVO) {
+        log.info("进入controller");
         UserDTO userDTO = new UserDTO();
         BeanUtils.copyProperties(userVO, userDTO);
         Integer updateValue = userService.updatePassword(userDTO);
-        User newUser = userService.getUserById(requestComponent.getUid());
+        //从redis中拿到auth，将auth解密后得到token。
+        //User newUser = userService.getUserById(requestComponent.getUid());
+
+        String auth = (String) redisUtil.get(MyToken.AUTHORIZATION);
+        MyToken myToken = encryptComponent.decryptToken(auth);
+        User newUser = userService.getUserById(myToken.getUid());
+        //
         log.debug("更新密码，拿到返回值newUSer：{}", newUser);
+        log.info("退出controller");
         if (updateValue == 0) {
             return new CommonResult(400, "密码重复，请输入新密码");
         }
@@ -91,7 +108,13 @@ public class UserController {
      */
     @GetMapping("getUser")
     public CommonResult getUserById() {
-        int uid = requestComponent.getUid();
+        //
+//        int uid = requestComponent.getUid();
+        String auth = (String) redisUtil.get(MyToken.AUTHORIZATION);
+        MyToken myToken = encryptComponent.decryptToken(auth);
+        int uid = myToken.getUid();
+        //
+
         User user = userService.getUserById(uid);
         if (user != null) {
             return new CommonResult(200, "用户信息", user);

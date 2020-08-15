@@ -1,20 +1,20 @@
 
 ### 获取用户对应菜单url
-GET http://localhost:8002/api/menu/getUserMenu
+GET http://localhost:8000/api/menu/getUserMenu
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Accept: application/json
 
 ###   删除权限
-POST http://localhost:8002/api/permission/deletePermission
+POST http://localhost:8000/api/permission/deletePermission
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Content-Type: application/json
 
 {
-  "id": 23
+  "id": 24
 }
 
 ### 添加权限
-POST http://localhost:8002/api/permission/savePermission
+POST http://localhost:8000/api/permission/savePermission
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Content-Type: application/json
 
@@ -24,12 +24,12 @@ Content-Type: application/json
 }
 
 ###  权限列表
-GET http://localhost:8002/api/permission/listPermission
+GET http://localhost:8000/api/permission/listPermission
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Accept: application/json
 
 ### 删除菜单权限
-POST http://localhost:8002/api/menu/deletePermisson
+POST http://localhost:8000/api/menu/deletePermisson
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Content-Type: application/json
 
@@ -39,7 +39,7 @@ Content-Type: application/json
 }
 
 ### 设置菜单权限
-POST http://localhost:8002/api/menu/setPermission
+POST http://localhost:8000/api/menu/setPermission
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Content-Type: application/json
 
@@ -49,16 +49,16 @@ Content-Type: application/json
 }
 
 ###  删除菜单
-POST http://localhost:8002/api/menu/deleteMenu
+POST http://localhost:8000/api/menu/deleteMenu
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Content-Type: application/json
 
 {
-  "id": 7
+  "id": 8
 }
 
 ###  添加菜单
-POST http://localhost:8002/api/menu/saveMenu
+POST http://localhost:8000/api/menu/saveMenu
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Content-Type: application/json
 
@@ -69,12 +69,12 @@ Content-Type: application/json
 }
 
 ###  查看菜单列表
-GET http://localhost:8002/api/menu/listMenu
+GET http://localhost:8000/api/menu/listMenu
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Accept: application/json
 
 ### 删除角色菜单
-POST http://localhost:8002/api/role/deleteMenu
+POST http://localhost:8000/api/role/deleteMenu
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Content-Type: application/json
 
@@ -84,7 +84,7 @@ Content-Type: application/json
 }
 
 ###  设置角色菜单
-POST http://localhost:8002/api/role/setMenu
+POST http://localhost:8000/api/role/setMenu
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Content-Type: application/json
 
@@ -94,16 +94,16 @@ Content-Type: application/json
 }
 
 ### 删除角色
-POST http://localhost:8002/api/role/deleteRole
+POST http://localhost:8000/api/role/deleteRole
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Content-Type: application/json
 
 {
-  "rid": 6
+  "rid": 7
 }
 
 ### 添加角色
-POST http://localhost:8002/api/role/saveRole
+POST http://localhost:8000/api/role/saveRole
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Content-Type: application/json
 
@@ -112,21 +112,21 @@ Content-Type: application/json
 }
 
 ###   查看角色列表
-GET http://localhost:8002/api/role/listRole
+GET http://localhost:8000/api/role/listRole
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Accept: application/json
 
 ###  删除用户（id
-POST http://localhost:8002/api/user/deleteUser
+POST http://localhost:8000/api/user/deleteUser
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Content-Type: application/json
 
 {
-  "uid": 33
+  "uid": 34
 }
 
 ### 删除用户角色
-POST http://localhost:8002/api/user/deleteRole
+POST http://localhost:8000/api/user/deleteRole
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Content-Type: application/json
 
@@ -137,7 +137,7 @@ Content-Type: application/json
 
 
 ###  设置角色
-POST http://localhost:8002/api/user/setRole
+POST http://localhost:8000/api/user/setRole
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Content-Type: application/json
 
@@ -156,27 +156,27 @@ Content-Type: application/json
 }
 
 ###   查看所有用户
-GET http://localhost:8002/api/user/listUser
+GET http://localhost:8000/api/user/listUser
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Accept: application/json
 
 
 ### 登录  9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
-POST http://localhost:8002/api/login
+POST http://localhost:8000/api/login
 Content-Type: application/json
 
 {
-  "name": "Wang是啥",
+  "name": "Qin",
   "password": "123456"
 }
 
 ###   获取当前用户信息,应该使用封装类vo
-GET http://localhost:8002/api/user/getUser
+GET http://localhost:8000/api/user/getUser
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Accept: application/json
 
 ###   添加用户
-POST http://localhost:8002/api/user/saveUser
+POST http://localhost:8000/api/user/saveUser
 Authorization: 9b7db0a4bc88dacc1396dcb4b8b4d9121acc6022fc2f4162c26afed0f8a740d81f1c4dd117eef32aac511047e3d6ce9e
 Content-Type: application/json
 

@@ -2,6 +2,7 @@ package com.boss.component;
 
 import com.boss.component.component.EncryptComponent;
 import com.boss.component.component.MyToken;
+import com.boss.component.component.RedisUtil;
 import com.boss.mvc.dao.MenuDao;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +28,20 @@ class ComponentApplicationTest {
     @Autowired
     private MenuDao menuDao;
 
+    @Autowired
+    private RedisUtil redisUtil;
+
     @Test
-    void test1(){
+    void test1() {
         MyToken myToken = new MyToken(2, 1);
         String auth = encryptComponent.encryptToken(myToken);
         System.out.println(auth);
     }
 
     @Test
-    void test2(){
-
+    void test2() {
+        String auth = (String) redisUtil.get(MyToken.AUTHORIZATION);
+        MyToken myToken = encryptComponent.decryptToken(auth);
+        System.out.println(myToken);
     }
 }
