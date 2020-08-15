@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mvc" />
+        <module name="component-service" />
+        <module name="gateway" />
+        <module name="login-service" />
+        <module name="rbac-manager-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="component-service" target="11" />
+      <module name="gateway" target="11" />
+      <module name="login-service" target="11" />
+      <module name="mvc" target="11" />
+      <module name="rbac-demo" target="11" />
+      <module name="rbac-manager-service" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="component-service" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="login-service" options="-parameters" />
+      <module name="mvc" options="-parameters" />
+      <module name="rbac-demo" options="-parameters" />
+      <module name="rbac-manager-service" options="-parameters" />
+    </option>
+  </component>
+</project>
