@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @create :2020-08-15 15:02:00
  */
 @SpringBootApplication
-@ComponentScan(value = {"com.boss.component","com.boss.gateway"})
+@ComponentScan(value = {"com.boss.component","com.boss.gateway","com.boss.mvc"})
 public class GatewayApplication {
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);

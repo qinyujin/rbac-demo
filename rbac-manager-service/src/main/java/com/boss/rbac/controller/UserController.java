@@ -156,7 +156,7 @@ public class UserController {
         Integer deleteValue = userService.deleteRole(urd);
         User user = userService.getUserById(urd.getUid());
         if (deleteValue == 1) {
-            return new CommonResult(200, "删除角色" + userService.getRole(user.getId()) + "成功"
+            return new CommonResult(200, "删除角色成功"
             );
         } else {
             return new CommonResult(500, "服务器异常");

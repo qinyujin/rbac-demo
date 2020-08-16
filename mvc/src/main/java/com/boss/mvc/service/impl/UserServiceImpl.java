@@ -86,7 +86,6 @@ public class UserServiceImpl implements UserService {
     public Integer updatePassword(UserDTO userDTO) {
         log.info("进入service");
         //由于不能循环依赖，在这里就不使用component组件了，直接使用redis
-
 //        int uid = requestComponent.getUid();
         Jedis jedis = new Jedis();
         jedis.auth("123456");
@@ -97,7 +96,6 @@ public class UserServiceImpl implements UserService {
         MvcMyToken mvcMyToken = encryptUtil.decryptToken(realAuth);
         log.info("Mytoken:"+mvcMyToken.toString());
         int uid = mvcMyToken.getUid();
-
         //
         User user = userDao.selectById(uid);
         boolean repeat = encoder.matches(userDTO.getPassword(), user.getPassword());

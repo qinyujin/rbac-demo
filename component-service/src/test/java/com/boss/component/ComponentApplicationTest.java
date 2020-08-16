@@ -44,4 +44,12 @@ class ComponentApplicationTest {
         MyToken myToken = encryptComponent.decryptToken(auth);
         System.out.println(myToken);
     }
+
+    @Test
+    void test3() {
+        String auth = (String) redisUtil.get(MyToken.AUTHORIZATION);
+        MyToken myToken = encryptComponent.decryptToken(auth);
+        System.out.println("auth:"+auth);
+        System.out.println("mytoken:"+myToken);
+    }
 }

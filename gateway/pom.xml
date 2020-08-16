@@ -23,6 +23,12 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.boss</groupId>
+            <artifactId>mvc</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
 <!--        排除掉springMVC，这个会和gateway自带netty冲突-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
