@@ -2,6 +2,7 @@ package com.boss.rbac;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @create :2020-08-15 16:52:00
  */
 @SpringBootApplication
+@EnableDiscoveryClient
 @ComponentScan(basePackages = {"com.boss.component","com.boss.rbac"})
 public class RbacApplication {
     public static void main(String[] args) {
