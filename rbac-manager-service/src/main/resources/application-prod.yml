@@ -2,8 +2,12 @@ server:
   port: 8002
 
 spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://127.0.0.1:8848
   application:
-    name: rbac-manager-service
+    name: rbac-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/bosstrain?characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
