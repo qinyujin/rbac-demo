@@ -25,19 +25,8 @@ public class EncryptUtil {
     @Value("${my.salt}")
     private String salt;
 
-    /*@Resource(name = "getMvcTextEncryptor")
-    private TextEncryptor encryptor;*/
-
-    /*@Bean
-    @Lazy
-    public TextEncryptor getMvcTextEncryptor() {
-        return Encryptors.text(secrytkey, salt);
-    }*/
-
     public String encryptToken(MvcMyToken token) {
-        //
         TextEncryptor encryptor =  Encryptors.text(secrytkey,salt);
-        //
         try {
             String json = objectMapper.writeValueAsString(token);
             return encryptor.encrypt(json);
@@ -47,9 +36,7 @@ public class EncryptUtil {
     }
 
     public MvcMyToken decryptToken(String auth) {
-        //
         TextEncryptor encryptor =  Encryptors.text(secrytkey,salt);
-        //
         String json = encryptor.decrypt(auth);
         try {
             return objectMapper.readValue(json, MvcMyToken.class);

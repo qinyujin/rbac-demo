@@ -3,7 +3,6 @@ package com.boss.rbac.controller;
 import com.boss.component.component.EncryptComponent;
 import com.boss.component.component.MyToken;
 import com.boss.component.component.RedisUtil;
-import com.boss.component.component.RequestComponent;
 import com.boss.mvc.entity.CommonResult;
 import com.boss.mvc.entity.User;
 import com.boss.mvc.entity.dto.UserDTO;
@@ -33,9 +32,6 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private RequestComponent requestComponent;
 
     @Autowired
     private RedisUtil redisUtil;
