@@ -42,7 +42,6 @@ public class LoginFilter implements GlobalFilter, Ordered {
         //其他api判断登录状态
         //1、如果已经登录，则将用户id、角色id放入request中便于使用,再
         Boolean exists = redisUtil.exists(MyToken.AUTHORIZATION);
-        System.out.println(exists);
         if(exists){
             return chain.filter(exchange);
         }
